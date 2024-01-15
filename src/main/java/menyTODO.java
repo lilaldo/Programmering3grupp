@@ -3,41 +3,48 @@ import java.util.Scanner;
 public class menyTODO {
 
     public static void main(String[] args) {
-        String username = loginTODO.main(); // Hämtar användarnamnet från login(hoppas jag)
-        System.out.println("Välkommen " + username);
+        String username = loginTODO.login(); // Hämtar användarnamnet från login(hoppas jag)
+        välkomnaAnvändare(username);
         menyalternativ();
+    }
+
+    public static void välkomnaAnvändare(String username) {
+        System.out.println("Välkommen " + username);
     }
 
     public static void menyalternativ() {
         Scanner scan = new Scanner(System.in);
 
-        // testlista
-        String[] ärenden = {"Ärende ", "Ärende ", "Ärende "};
+        // test-array.
+        String[] ärenden = {"TODO now", "TODO later ", "TODO tomorrow "};
 
         while (true) {
-            System.out.println("Här är dina ärenden:");
+            System.out.println("Dina TODOs:");
             for (int i = 0; i < ärenden.length; i++) {
                 System.out.println((i + 1) + ". " + ärenden[i]);
             }
 
-            System.out.println("Ange ditt val (siffror från ovan): ");
+            System.out.print("Vad vill du göra idag? ");
             String val = scan.nextLine();
 
-            if (ärValtÄrende(val, ärenden)) {
+            if (valtÄrende(val, ärenden)) {
                 visaÄrendeInfo(val);
-            } else if (val.equals("add")) {
+            } else if (val.equals("add")) {     // lägg till
                 läggTillÄrende();
-            } else if (val.equals("del")) {
+            } else if (val.equals("del")) {     // ta bort
                 taBortÄrende();
-            } else if (val.equals("change")) {
+            } else if (val.equals("change")) {  // ändra
                 ändraÄrende();
+            } else if (val.equals("logout")) {  // logga ut
+                loginTODO.login();
             } else {
                 System.out.println("Ogiltigt val, försök igen.");
             }
         }
     }
 
-    public static boolean ärValtÄrende(String val, String[] ärenden) {
+    // För att fkn java ska fatta vilket jävla nummer jag väljer.
+    public static boolean valtÄrende(String val, String[] ärenden) {
         try {
             int index = Integer.parseInt(val) - 1;
             return index >= 0 && index < ärenden.length;
@@ -47,9 +54,9 @@ public class menyTODO {
     }
 
     public static void visaÄrendeInfo(String val) {
-        // Logiken för att visa information om det valda ärendet
-        System.out.println("Information om ärende " + val);
-        // Kod för att visa information om det valda ärendet
+        // visa information ärende.
+        System.out.println("Ärende: " + val);
+        // kod för att visa information
     }
 
     public static void läggTillÄrende() {
@@ -58,6 +65,8 @@ public class menyTODO {
         System.out.print("Ange namn: ");
         String nyttÄrende = scan.nextLine();
         // Lägg till kod för att spara det nya ärendet
+        // Behöver:
+        // Namn, Prio, Datum(?),
         System.out.println("Ärende '" + nyttÄrende + "' har lagts till.");
     }
 
@@ -65,7 +74,7 @@ public class menyTODO {
         Scanner scan = new Scanner(System.in);
         System.out.println("Vilket ärende vill du ta bort? Ange numret:");
         int index = scan.nextInt() - 1;
-        // Lägg till kod för att ta bort det valda ärendet
+        // kod för att ta bort
         System.out.println("Ärende " + (index + 1) + " har tagits bort.");
     }
 
@@ -73,7 +82,7 @@ public class menyTODO {
         Scanner scan = new Scanner(System.in);
         System.out.println("Vilket ärende vill du ändra? Ange numret:");
         int index = scan.nextInt() - 1;
-        // Lägg till kod för att ändra det valda ärendet
+        // kod för att ändra
         System.out.println("Ärende " + (index + 1) + " har ändrats.");
     }
 }

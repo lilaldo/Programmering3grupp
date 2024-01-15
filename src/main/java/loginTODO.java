@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class loginTODO {
-    public static String main() {
+    public static String login() {
         var scan = new Scanner(System.in);
 
-        System.out.print("Välkommen! Logga in eller registrera: ");
+        System.out.print("Välkommen! \nLogga in eller registrera: ");
 
         String val = scan.nextLine();
 
@@ -25,8 +25,11 @@ public class loginTODO {
             return regUser; // Return användarnamn efter registrering.
 
         } else {
-            System.out.println("Ogiltigt val. Programmet avslutas.");
+            System.out.println("Ogiltigt val. Försök igen.");
             return null; // Return null om ogiltigt val.
         }
     }
 }
+
+// Fixa så att om man inte skriver in login eller reg så skrivs enbart "ogiltigt val, försök igen ut"
+// Fel på meny?
