@@ -99,3 +99,8 @@ public class menyTODO {
         System.out.println("Ärende " + (index + 1) + " har ändrats.");
     }
 }
+
+
+// fixa ny klass eller liknande för att köra en clear på terminalen mellan varje avsnitt i koden?
+// någon form av bakåt-knapp?
+// ram runtom? Centrerad GUI?
