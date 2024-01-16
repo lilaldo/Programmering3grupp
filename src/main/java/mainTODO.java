@@ -9,6 +9,6 @@ public class mainTODO {
         }
 
         menyTODO.välkomnaAnvändare(username);   // 2. välkomsttext.
-        menyTODO.menyalternativ();              // 3. menyn körs.
+        menyTODO.menyalternativ();              // 3. menyn körs..
     }
 }

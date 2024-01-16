@@ -64,7 +64,7 @@ public class menyTODO {
         System.out.println("Lägg till nytt ärende:");
         System.out.print("Ange namn: ");
         String nyttÄrende = scan.nextLine();
-        // Lägg till kod för att spara det nya ärendet
+        // kod för att spara det nya ärendet
         // Behöver:
         // Namn, Prio, Datum(?),
         System.out.println("Ärende '" + nyttÄrende + "' har lagts till.");

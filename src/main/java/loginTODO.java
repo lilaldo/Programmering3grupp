@@ -9,7 +9,7 @@ public class loginTODO {
         String val = scan.nextLine();
 
         if (val.equalsIgnoreCase("login")) {
-            System.out.print("Namn: ");
+            System.out.print("Namn: "); // Lagra?
             String user = scan.next();
 
             // Kod för att kolla så att användaren finns i json-filen (här eller i main?)?
