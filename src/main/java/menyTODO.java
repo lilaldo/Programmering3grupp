@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class menyTODO {
 
     // Array för att kunna lagra todos.
@@ -16,12 +17,19 @@ public class menyTODO {
         System.out.println("Välkommen " + username);
     }
 
+
+
     public static void menyalternativ() {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
             visaÄrenden();
-
+            System.out.println("**********************");
+            System.out.println("Add");
+            System.out.println("Change");
+            System.out.println("Delete");
+            System.out.println("Logout");
+            System.out.println("**********************");
             System.out.print("Vad vill du göra idag? ");
             String val = scan.nextLine();
 
@@ -69,6 +77,7 @@ public class menyTODO {
 
     public static void läggTillÄrende(Scanner scan) {
         System.out.println("Lägg till nytt ärende: ");
+        System.out.print("Namn: ");
         String nyttÄrende = scan.nextLine();
 
         // Kod för att lägga till prioritet och datum.
