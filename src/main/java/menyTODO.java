@@ -66,6 +66,7 @@ public class menyTODO {
         }
     }
 
+    // Holdplace för val. Kanske går att ersätta med ändraÄrende?
     public static void visaÄrendeInfo(String val) {
         // visa information ärende.
         System.out.println("Ärende: " + ärenden.get(Integer.parseInt(val) - 1));
@@ -92,11 +93,12 @@ public class menyTODO {
         System.out.println("Ärende '" + nyttÄrende + "' har lagts till.");
     }
 
+    // kod för att ta bort ärende från listan.
     public static void taBortÄrende() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Vilket ärende vill du ta bort? Ange numret:");
         int index = scan.nextInt() - 1;
-        ärenden.remove(index); // kod för att ta bort ärende från listan.
+        ärenden.remove(index);
         System.out.println("Ärende " + (index + 1) + " har tagits bort.");
     }
 
@@ -104,12 +106,51 @@ public class menyTODO {
         Scanner scan = new Scanner(System.in);
         System.out.println("Vilket ärende vill du ändra? Ange numret:");
         int index = scan.nextInt() - 1;
-        // kod för att ändra, behöver utvecklas.
-        System.out.println("Ärende " + (index + 1) + " har ändrats.");
+
+        if (modifyTODO.valtÄrende(Integer.toString(index + 1), ärenden)) {
+            visaÄrendeInfo(Integer.toString(index + 1));
+
+            System.out.println("Vad vill du ändra?");
+            System.out.println("1. Namn");
+            System.out.println("2. Prioritet");
+            System.out.println("3. Datum");
+            System.out.println("4. Tillbaka");
+            int val = scan.nextInt();
+            scan.nextLine();
+
+            switch (val) {
+                case 1:
+                    System.out.print("Nytt namn: ");
+                    String nyttNamn = scan.nextLine();
+                    modifyTODO.ändraNamn(index, nyttNamn, ärenden);
+                    break;
+                // Ändra datum.
+                case 2:
+                    System.out.print("Nytt datum: ");
+                    String nyttDatum = scan.nextLine();
+                    modifyTODO.ändraDatum(index, nyttDatum, ärenden);
+                    break;
+                // Ändra. prio.
+                case 3:
+                    System.out.print("Ny prioritet: ");
+                    String nyPrioritet = scan.nextLine();
+                    modifyTODO.ändraPrioritet(index, nyPrioritet, ärenden);
+                    break;
+
+                // Tillbaka.
+                case 4:
+                    break;
+
+                default:
+                    System.out.println("Ogiltigt val, ingen ändring genomförd.");
+                    break;
+            }
+        } else {
+            System.out.println("Ogiltigt ärendenummer.");
+        }
     }
 }
 
 
 // fixa ny klass eller liknande för att köra en clear på terminalen mellan varje avsnitt i koden?
-// någon form av bakåt-knapp?
 // ram runtom? Centrerad GUI?
