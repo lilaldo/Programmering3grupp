@@ -12,7 +12,7 @@ public class loginTODO {
     public static String login() {
         var scan = new Scanner(System.in);
 
-        System.out.print("Welcome! \nLog in or sign up: ");
+        System.out.print("Welcome! \nLogin or signup: ");
 
         String val = scan.nextLine();
 

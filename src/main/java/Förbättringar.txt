@@ -1,0 +1,1 @@
+1. Lägga till färgkoder för text.
