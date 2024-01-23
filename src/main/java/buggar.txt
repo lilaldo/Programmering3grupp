@@ -1,2 +1,1 @@
 1. Crash när man försöker modifiera ett ärende
-2. Verkar bara kunna lagra tasks för en person.
