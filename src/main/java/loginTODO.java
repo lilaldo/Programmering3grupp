@@ -47,7 +47,7 @@ public class loginTODO {
 
             return regUser;
         } else {
-            System.out.println("Try again.");
+            System.out.println("Invalid choice. Try again.");
             return null;
         }
     }

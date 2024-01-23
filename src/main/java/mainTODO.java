@@ -3,7 +3,6 @@ public class mainTODO {
         String username = loginTODO.login();
 
         while (username == null) {
-            System.out.println("User cannot be found, try again.");
             username = loginTODO.login();
         }
 
