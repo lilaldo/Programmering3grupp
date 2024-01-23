@@ -45,6 +45,7 @@ public class menyTODO {
             } else if (val.equals("delete")) {
                 taBortÄrende();
             } else if (val.equals("logout")) {
+                System.out.println(" ");
                 currentUser.setTasks(new ArrayList<>(ärenden));
                 loginTODO.saveUserData(users);
                 loginTODO.login();
