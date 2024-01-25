@@ -1,9 +1,22 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class menyTODO {
     private static ArrayList<String> ärenden = new ArrayList<>();
+
+    // Simple print day function
+    public static void printDay() {
+        LocalDate currentDate = LocalDate.now();
+        DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+        System.out.println(dayOfWeek);
+    }
+
 
     // Metod för att hantera menyalternativen för en användaren.
     public static void menyalternativ(String username) {
@@ -34,6 +47,7 @@ public class menyTODO {
 
             // Visa menyalternativ
             System.out.println("**********************");
+            printDay();
             System.out.println("1. Add");
             System.out.println("2. Change");
             System.out.println("3. Delete");
@@ -92,6 +106,29 @@ public class menyTODO {
     public static void visaÄrendeInfo(String val) {
         System.out.println("Task: " + ärenden.get(Integer.parseInt(val) - 1));
     }
+    public static void deadlines(String dayOfWeek) {
+        System.out.println("Tasks for " + dayOfWeek + ":");
+
+        for (String task : ärenden) {
+            if (task.contains("| When: " + dayOfWeek)) {
+                System.out.println(task);
+            }
+        }
+    }
+
+    private static Map<String, DayOfWeek> svDayMap;
+
+    static {
+        // Mapping of dag till day
+        svDayMap = new HashMap<>();
+        svDayMap.put("måndag", DayOfWeek.MONDAY);
+        svDayMap.put("tisdag", DayOfWeek.TUESDAY);
+        svDayMap.put("onsdag", DayOfWeek.WEDNESDAY);
+        svDayMap.put("torsdag", DayOfWeek.THURSDAY);
+        svDayMap.put("fredag", DayOfWeek.FRIDAY);
+        svDayMap.put("lördag", DayOfWeek.SATURDAY);
+        svDayMap.put("söndag", DayOfWeek.SUNDAY);
+    }
 
     // Metod för att lägga till ett nytt ärende.
     public static void läggTillÄrende(Scanner scan) {
@@ -99,13 +136,35 @@ public class menyTODO {
         System.out.print("What is the task: ");
         String nyttÄrende = scan.nextLine();
         System.out.print("Deadline: ");
-        String datum = scan.nextLine();
-        System.out.print("Priority: ");
-        String prioritet = scan.nextLine();
+        String datum = scan.nextLine().toLowerCase(Locale.forLanguageTag("sv"));
 
-        ärenden.add(nyttÄrende + " | When: " + datum + " | Priority: " + prioritet);
+        LocalDate currentDate = LocalDate.now();
+        DayOfWeek currentDayOfWeek = currentDate.getDayOfWeek();
 
-        System.out.println("Task '" + nyttÄrende + "' is added.");
+        if (datum.equals("tomorrow") || datum.equals("imorgon")) {
+            DayOfWeek nextDay = currentDayOfWeek.plus(1);
+            System.out.print("Priority: ");
+            String prioritet = scan.nextLine();
+
+            ärenden.add(nyttÄrende + " | When: " + nextDay + " | Priority: " + prioritet);
+            System.out.println("Task '" + nyttÄrende + "' is added for " + nextDay + ".");
+
+        } else if (svDayMap.containsKey(datum)) {
+            DayOfWeek datums = svDayMap.get(datum);
+            System.out.print("Priority: ");
+            String prioritet = scan.nextLine();
+
+            ärenden.add(nyttÄrende + " | When: " + datums + " | Priority: " + prioritet);
+            System.out.println("Task '" + nyttÄrende + "' is added for " + datums + ".");
+
+        } else {
+            System.out.println("Invalid day of the week. The task will be added without a deadline.");
+            System.out.print("Priority: ");
+            String prioritet = scan.nextLine();
+
+            ärenden.add(nyttÄrende + " | Priority: " + prioritet);
+            System.out.println("Task '" + nyttÄrende + "' is added without deadline.");
+        }
     }
 
     // Metod för att ta bort ett ärende.
