@@ -12,7 +12,7 @@ public class loginTODO {
     // Metod för att hantera login eller registrering
     public static String login() {
         // Skapa en Scanner för att läsa användarinmatning
-        var scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         // Visa välkomstmeddelande och be användaren att logga in eller registrera sig
         System.out.print("Welcome! \nLogin or signup: ");
