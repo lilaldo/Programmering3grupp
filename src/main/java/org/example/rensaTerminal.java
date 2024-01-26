@@ -1,4 +1,4 @@
-/*
+package org.example;/*
 * Ska inte fungera i intellij idea skärm!
 * måste köras från terminalen
 * java -jar <full path till .jar fil>

@@ -1,9 +1,12 @@
+package org.example;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class loginTODO {
     // Filvägen till JSON.
